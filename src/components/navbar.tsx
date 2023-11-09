@@ -20,13 +20,13 @@ const Navbar = () => {
             className="w-50"
           />
         </NavigationMenuItem>
-        <NavigationMenuLink className="text-primary  hover:bg-secondary p-4 transition-colors">
+        <NavigationMenuLink className="hover:bg-secondary p-4 transition-colors">
           <a>Forum</a>
         </NavigationMenuLink>
-        <NavigationMenuLink className="text-primary hover:bg-secondary p-4">
+        <NavigationMenuLink className="hover:bg-secondary p-4">
           <a>Stats</a>
         </NavigationMenuLink>
-        <NavigationMenuLink className="text-primary hover:bg-secondary p-4">
+        <NavigationMenuLink className=" hover:bg-secondary p-4">
           <a>Submit</a>
         </NavigationMenuLink>
       </NavigationMenuList>
