@@ -22,7 +22,7 @@ const AvatarMenu = () => {
         >
           <Avatar className="h-8 w-8">
             <AvatarImage
-              src="https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fvignette.wikia.nocookie.net%2Fmegamitensei%2Fimages%2F6%2F64%2FP5_portrait_of_Morgana.png%2Frevision%2Flatest%3Fcb%3D20170310074539&sp=1699546592Tb94a3808a8e10106df967697468a91fb8f191a7a57ea28a02b81954d1f99ea0d"
+              src="http://vignette1.wikia.nocookie.net/megamitensei/images/b/be/Morgana_All_Out.png/revision/latest?cb=20170225132542"
               alt="Avatar"
             />
             <AvatarFallback>PP</AvatarFallback>

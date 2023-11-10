@@ -8,26 +8,40 @@ import { ModeToggle } from "./mode-toggle";
 import { Input } from "./ui/input";
 import AvatarMenu from "./avatar-menu";
 
-const Navbar = () => {
+const Navbar = ({ setSearch }) => {
+  let handleChange = (search) => {
+    setSearch(search);
+  };
+
   return (
     <NavigationMenu className="sticky min-w-full justify-between  px-4 bg-background shadow-2xl ">
       <NavigationMenuList className="cursor-pointer space-x-0">
         <NavigationMenuItem className="flex">
           <ModeToggle />
           <Input
+            onChange={(e) => handleChange(e.target.value)}
             type="text"
             placeholder="Search..."
             className="w-50"
           />
         </NavigationMenuItem>
-        <NavigationMenuLink className="hover:bg-secondary p-4 transition-colors">
-          <a>Forum</a>
+        <NavigationMenuLink
+          href=""
+          className="hover:bg-secondary p-4 transition-colors"
+        >
+          Forum
         </NavigationMenuLink>
-        <NavigationMenuLink className="hover:bg-secondary p-4">
-          <a>Stats</a>
+        <NavigationMenuLink
+          href=""
+          className="hover:bg-secondary p-4"
+        >
+          Stats
         </NavigationMenuLink>
-        <NavigationMenuLink className=" hover:bg-secondary p-4">
-          <a>Submit</a>
+        <NavigationMenuLink
+          href=""
+          className=" hover:bg-secondary p-4"
+        >
+          Submit
         </NavigationMenuLink>
       </NavigationMenuList>
       <AvatarMenu />
