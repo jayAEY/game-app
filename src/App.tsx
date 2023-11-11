@@ -11,7 +11,9 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       const initialData = await fetch(
-        `https://api.rawg.io/api/games?key=${import.meta.env.VITE_RAWG}`
+        `https://api.rawg.io/api/games?key=${
+          import.meta.env.VITE_RAWG
+        }&ordering=-metacritic`
       );
       const searchData = await fetch(
         `https://rawg.io/api/games?key=${
@@ -31,7 +33,7 @@ function App() {
     fetchData().catch(console.error);
   }, [search]);
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <ThemeProvider
@@ -41,17 +43,19 @@ function App() {
       <Navbar setSearch={setSearch} />
       <main className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary">
         {data.map((game, index) => {
-          return (
-            <GameCard
-              name={game.name}
-              rating={game.rating}
-              platforms={game.platforms}
-              released={game.released}
-              metacritic={game.metacritic}
-              img={game.background_image}
-              key={index}
-            />
-          );
+          if (game.background_image) {
+            return (
+              <GameCard
+                name={game.name}
+                platforms={game.parent_platforms}
+                released={game.released}
+                metacritic={game.metacritic}
+                background_image={game.background_image}
+                playtime={game.playtime}
+                key={index}
+              />
+            );
+          }
         })}
       </main>
     </ThemeProvider>

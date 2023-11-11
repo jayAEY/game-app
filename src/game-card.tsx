@@ -7,54 +7,80 @@ import {
   CardHeader,
   CardTitle,
 } from "./components/ui/card";
-import { Input } from "./components/ui/input";
-import { Label } from "./components/ui/label";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./components/ui/select";
+  BsWindows,
+  BsPlaystation,
+  BsXbox,
+  BsNintendoSwitch,
+  BsApple,
+  BsAndroid,
+} from "react-icons/bs";
+import { DiLinux } from "react-icons/di";
+const GameCard = (props) => {
+  let handlePlatformIcons = (platform, index) => {
+    switch (platform) {
+      case "PlayStation":
+        return <BsPlaystation key={(platform, index)} />;
+        break;
+      case "Xbox":
+        return <BsXbox key={(platform, index)} />;
+        break;
+      case "Nintendo":
+        return <BsNintendoSwitch key={(platform, index)} />;
+        break;
+      case "iOS":
+        return <BsApple key={(platform, index)} />;
+        break;
+      case "Apple Macintosh":
+        return <BsApple key={(platform, index)} />;
+        break;
+      case "Android":
+        return <BsAndroid key={(platform, index)} />;
+        break;
+      case "PC":
+        return <BsWindows key={(platform, index)} />;
+        break;
+      case "Linux":
+        return <DiLinux key={(platform, index)} />;
+        break;
+    }
+  };
 
-const GameCard = ({ name }) => {
+  let handleMetacritic = (score) => {
+    if (score > 74) {
+      return <p className="bg-green-600 text-secondary px-1 ">{score}</p>;
+    } else if (score < 75 && score > 49) {
+      return <p className="bg-primary text-secondary px-1">{score}</p>;
+    } else if (score < 50 && score != null) {
+      return <p className="bg-red-700 text-secondary px-1">{score}</p>;
+    }
+  };
+
   return (
-    // <Card className="w-[350px]">
-    <Card className="h-min col-span-4 md:col-span-2 xl:col-span-1">
+    <Card className="flex-row  col-span-4 md:col-span-2 xl:col-span-1 gap-2 rounded-none bg-card shadow-2xl">
       <CardHeader>
-        <CardTitle>{name}</CardTitle>
-        <CardDescription>Deploy your new project in one-click.</CardDescription>
+        <CardTitle className="text-2xl">{props.name}</CardTitle>
       </CardHeader>
-      <CardContent>
-        <form>
-          <div className="grid w-full items-center gap-4">
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="name">Name</Label>
-              <Input
-                id="name"
-                placeholder="Name of your project"
-              />
-            </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="framework">Framework</Label>
-              <Select>
-                <SelectTrigger id="framework">
-                  <SelectValue placeholder="Select" />
-                </SelectTrigger>
-                <SelectContent position="popper">
-                  <SelectItem value="next">Next.js</SelectItem>
-                  <SelectItem value="sveltekit">SvelteKit</SelectItem>
-                  <SelectItem value="astro">Astro</SelectItem>
-                  <SelectItem value="nuxt">Nuxt.js</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-        </form>
+      <CardContent className="space-y-4">
+        <div className="flex space-x-2 items-center">
+          <p>Average playtime: {props.playtime} hours</p>
+          {handleMetacritic(props.metacritic)}
+        </div>
+        <img
+          src={props.background_image}
+          className=" w-full aspect-video object-cover "
+          alt={props.name}
+        />
+        <div className="flex space-x-2  items-center">
+          <p>Release Date: {props.released}</p>
+          {props.platforms &&
+            props.platforms.map((plat, index) => {
+              return handlePlatformIcons(plat.platform.name, index);
+            })}
+        </div>
       </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button variant="outline">Cancel</Button>
-        <Button>Deploy</Button>
+      <CardFooter>
+        <Button>Add to Backlog</Button>
       </CardFooter>
     </Card>
   );
