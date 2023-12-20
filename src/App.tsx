@@ -1,10 +1,12 @@
 import { ThemeProvider } from "./components/theme-provider";
 import Navbar from "./components/navbar";
 import GameCard from "./game-card";
+import Backlog from "./backlog";
 import { useEffect, useState } from "react";
 
 function App() {
   const [data, setData] = useState([]);
+
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
 
@@ -33,15 +35,15 @@ function App() {
     fetchData().catch(console.error);
   }, [search]);
 
-  // console.log(data);
-
   return (
     <ThemeProvider
       defaultTheme="dark"
       storageKey="vite-ui-theme"
     >
       <Navbar setSearch={setSearch} />
-      <main className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary">
+      {/* <main className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary"> */}
+      <Backlog />
+      <section className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary">
         {data.map((game, index) => {
           if (game.background_image) {
             return (
@@ -57,7 +59,8 @@ function App() {
             );
           }
         })}
-      </main>
+      </section>
+      {/* </main> */}
     </ThemeProvider>
   );
 }
