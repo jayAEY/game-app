@@ -37,11 +37,13 @@ const Backlog = (props) => {
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="space-x-2 items-center">
-          {backlogExample.map((game, index) => {
-            return <div>{game}</div>;
-          })}
+          <ol className="list-decimal">
+            {backlogExample.map((game, index) => {
+              return <li className="border">{game}</li>;
+            })}
+          </ol>
           <p>
-            Average playtime:hours Lorem ipsum dolor sit amet, consectetur
+            {/* Average playtime:hours Lorem ipsum dolor sit amet, consectetur
             adipiscing elit. Integer finibus lacinia nulla, vel facilisis enim
             sodales at. Aenean ex tortor, dictum quis dolor sit amet, bibendum
             ullamcorper elit. Ut aliquam lectus magna, eu eleifend risus
@@ -79,7 +81,7 @@ const Backlog = (props) => {
             convallis. Donec id odio ultrices, condimentum lacus eu, suscipit
             massa. Ut cursus vestibulum lacus at commodo. Suspendisse et aliquet
             odio. Mauris dignissim bibendum enim sed fringilla. Pellentesque vel
-            nisl sit amet dolor mollis imperdiet.
+            nisl sit amet dolor mollis imperdiet. */}
           </p>
           {/* {handleMetacritic(props.metacritic)} */}
           {/* </div> */}
