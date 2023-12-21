@@ -57,7 +57,7 @@ const GameCard = (props) => {
   };
 
   return (
-    <Card className="flex-row  col-span-4 md:col-span-2 xl:col-span-1 gap-2 rounded-none bg-card shadow-2xl">
+    <Card className="flex-row col-span-4 md:col-span-2 xl:col-span-1 gap-2 rounded-none bg-card shadow-2xl">
       <CardHeader>
         <CardTitle className="text-2xl">{props.name}</CardTitle>
       </CardHeader>

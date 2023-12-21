@@ -42,9 +42,10 @@ function App() {
     >
       <Navbar setSearch={setSearch} />
       {/* <main className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary"> */}
-      <Backlog />
       <section className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary">
-        {data.map((game, index) => {
+        <Backlog />
+
+        {/* {data.map((game, index) => {
           if (game.background_image) {
             return (
               <GameCard
@@ -58,7 +59,7 @@ function App() {
               />
             );
           }
-        })}
+        })} */}
       </section>
       {/* </main> */}
     </ThemeProvider>

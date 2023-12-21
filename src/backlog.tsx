@@ -31,7 +31,7 @@ const Backlog = (props) => {
     // <Card className="flex-row bg-gray-300 p-20 col-span-4 md:col-span-2 xl:col-span-1 gap-2 rounded-none bg-card shadow-2xl">
     // <Card className="flex flex-col w-96 content-center justify-center sm:m-20">
     // <Card className="flex flex-col w-96 content-center items-center justify-self-center m-20">
-    <Card className="md:max-w-xl">
+    <Card className="col-span-full lg:col-span-2 lg:col-start-2 rounded-none shadow-2xl">
       <CardHeader>
         <CardTitle className=" text-center text-2xl">Backlog</CardTitle>
       </CardHeader>
@@ -39,7 +39,11 @@ const Backlog = (props) => {
         <div className="space-x-2 items-center">
           <ol className="list-decimal">
             {backlogExample.map((game, index) => {
-              return <li className="border">{game}</li>;
+              return (
+                <li className="flex p-4 gap-1 border justify-between hover:bg-secondary">
+                  {game} <input type="checkbox"></input>
+                </li>
+              );
             })}
           </ol>
           <p>
