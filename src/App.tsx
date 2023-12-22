@@ -41,27 +41,28 @@ function App() {
       storageKey="vite-ui-theme"
     >
       <Navbar setSearch={setSearch} />
-      {/* <main className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary"> */}
-      <section className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary">
+      <main className="flex flex-col items-center">
+        {/* <main className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary"> */}
         <Backlog />
 
-        {/* {data.map((game, index) => {
-          if (game.background_image) {
-            return (
-              <GameCard
-                name={game.name}
-                platforms={game.parent_platforms}
-                released={game.released}
-                metacritic={game.metacritic}
-                background_image={game.background_image}
-                playtime={game.playtime}
-                key={index}
-              />
-            );
-          }
-        })} */}
-      </section>
-      {/* </main> */}
+        <section className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary">
+          {data.map((game, index) => {
+            if (game.background_image) {
+              return (
+                <GameCard
+                  name={game.name}
+                  platforms={game.parent_platforms}
+                  released={game.released}
+                  metacritic={game.metacritic}
+                  background_image={game.background_image}
+                  playtime={game.playtime}
+                  key={index}
+                />
+              );
+            }
+          })}
+        </section>
+      </main>
     </ThemeProvider>
   );
 }
