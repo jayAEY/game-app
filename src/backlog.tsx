@@ -7,15 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./components/ui/card";
-import {
-  BsWindows,
-  BsPlaystation,
-  BsXbox,
-  BsNintendoSwitch,
-  BsApple,
-  BsAndroid,
-} from "react-icons/bs";
-import { DiLinux } from "react-icons/di";
+
 const Backlog = (props) => {
   let backlogExample = [
     "The Legend of Zelda: Ocarina of Time",
@@ -27,6 +19,8 @@ const Backlog = (props) => {
     "Perfect Dark",
     "Metroid Prime",
   ];
+
+  // props.setBacklog(backlogExample);
 
   // let tasks = [];
   // let newTaskHTML = "";
@@ -144,7 +138,7 @@ const Backlog = (props) => {
       <CardContent className="space-y-4">
         <div className="flex flex-col  space-y-4 items-center">
           <ol className="list-decimal w-10/12">
-            {backlogExample.map((game, index) => {
+            {props.backlog.map((game, index) => {
               return (
                 <li
                   className={

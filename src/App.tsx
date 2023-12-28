@@ -10,6 +10,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
 
+  const [backlog, setBacklog] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const initialData = await fetch(
@@ -35,6 +37,11 @@ function App() {
     fetchData().catch(console.error);
   }, [search]);
 
+  // useEffect(() => {
+  //   localStorage.setItem("backlog", backlog);
+  //   console.log(JSON.parse(localStorage.getItem("backlog")));
+  // }, [backlog]);
+
   return (
     <ThemeProvider
       defaultTheme="dark"
@@ -43,7 +50,10 @@ function App() {
       <Navbar setSearch={setSearch} />
       <main className="flex flex-col items-center">
         {/* <main className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary"> */}
-        <Backlog />
+        <Backlog
+          backlog={backlog}
+          setBacklog={setBacklog}
+        />
 
         <section className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary">
           {data.map((game, index) => {
@@ -57,6 +67,8 @@ function App() {
                   background_image={game.background_image}
                   playtime={game.playtime}
                   key={index}
+                  backlog={backlog}
+                  setBacklog={setBacklog}
                 />
               );
             }

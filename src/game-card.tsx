@@ -1,3 +1,4 @@
+import Backlog from "./backlog";
 import { Button } from "./components/ui/button";
 import {
   Card,
@@ -51,8 +52,14 @@ const GameCard = (props) => {
       return <p className="bg-green-600 text-secondary px-1 ">{score}</p>;
     } else if (score < 75 && score > 49) {
       return <p className="bg-primary text-secondary px-1">{score}</p>;
-    } else if (score < 50 && score != null) {
+    } else if (score < 50 && score !== null) {
       return <p className="bg-red-700 text-secondary px-1">{score}</p>;
+    } else if (score == null) {
+      return (
+        <p className="bg-gray-500 text-secondary text-xs font-extrabold px-0.5 py-1.5">
+          N/A
+        </p>
+      );
     }
   };
 
@@ -80,7 +87,15 @@ const GameCard = (props) => {
         </div>
       </CardContent>
       <CardFooter>
-        <Button>Add to Backlog</Button>
+        <Button
+          onClick={(e) => {
+            let gameName =
+              e.target.parentElement.parentElement.firstChild.innerText;
+            props.setBacklog(props.backlog.concat(gameName));
+          }}
+        >
+          Add to Backlog
+        </Button>
       </CardFooter>
     </Card>
   );
