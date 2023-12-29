@@ -8,9 +8,9 @@ import { ModeToggle } from "./mode-toggle";
 import { Input } from "./ui/input";
 import AvatarMenu from "./avatar-menu";
 
-const Navbar = ({ setSearch }) => {
+const Navbar = (props) => {
   let handleChange = (search) => {
-    setSearch(search);
+    props.setSearch(search);
   };
 
   return (
@@ -44,7 +44,7 @@ const Navbar = ({ setSearch }) => {
           Submit
         </NavigationMenuLink>
       </NavigationMenuList>
-      <AvatarMenu />
+      <AvatarMenu setBacklogOpen={props.setBacklogOpen} />
     </NavigationMenu>
   );
 };

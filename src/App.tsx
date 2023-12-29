@@ -1,7 +1,7 @@
 import { ThemeProvider } from "./components/theme-provider";
 import Navbar from "./components/navbar";
-import GameCard from "./game-card";
-import Backlog from "./backlog";
+import GameCard from "./components/game-card";
+import Backlog from "./components/backlog";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
   const [search, setSearch] = useState("");
 
   const [backlog, setBacklog] = useState([]);
+  const [backlogOpen, setBacklogOpen] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,14 +48,20 @@ function App() {
       defaultTheme="dark"
       storageKey="vite-ui-theme"
     >
-      <Navbar setSearch={setSearch} />
+      <Navbar
+        setSearch={setSearch}
+        backlogOpen={backlogOpen}
+        setBacklogOpen={setBacklogOpen}
+      />
       <main className="flex flex-col items-center">
         {/* <main className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary"> */}
-        <Backlog
-          backlog={backlog}
-          setBacklog={setBacklog}
-        />
-
+        {backlogOpen === true && (
+          <Backlog
+            backlog={backlog}
+            setBacklog={setBacklog}
+            setBacklogOpen={setBacklogOpen}
+          />
+        )}
         <section className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary">
           {data.map((game, index) => {
             if (game.background_image) {

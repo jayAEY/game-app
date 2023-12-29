@@ -12,7 +12,7 @@ import {
 import { Button } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
-const AvatarMenu = () => {
+const AvatarMenu = (props) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -45,7 +45,13 @@ const AvatarMenu = () => {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Games</DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              props.setBacklogOpen(true);
+            }}
+          >
+            Games
+          </DropdownMenuItem>
           <DropdownMenuItem>Reviews</DropdownMenuItem>
           <DropdownMenuItem>Collections</DropdownMenuItem>
           <DropdownMenuItem>Stats</DropdownMenuItem>

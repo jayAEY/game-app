@@ -1,14 +1,11 @@
-import { Button } from "./components/ui/button";
+import { Button } from "./ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "./components/ui/card";
-import { Checkbox } from "./components/ui/checkbox";
-import { FaWindowClose } from "react-icons/fa";
+} from "./ui/card";
 const Backlog = (props) => {
   // let backlogExample = [
   //   "The Legend of Zelda: Ocarina of Time",
@@ -35,7 +32,12 @@ const Backlog = (props) => {
     <Card className="m-14 w-5/6 max-w-6xl rounded-none shadow-2xl">
       <CardHeader className="flex justify-center">
         <CardTitle className="text-center text-2xl">Backlog</CardTitle>
-        <Button className="absolute px-2 py-0">✖</Button>
+        <Button
+          className="absolute px-2 py-0"
+          onClick={() => props.setBacklogOpen(false)}
+        >
+          ✖
+        </Button>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex flex-col  space-y-4 items-center">
