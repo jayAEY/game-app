@@ -37,10 +37,10 @@ function App() {
     fetchData().catch(console.error);
   }, [search]);
 
-  // useEffect(() => {
-  //   localStorage.setItem("backlog", backlog);
-  //   console.log(JSON.parse(localStorage.getItem("backlog")));
-  // }, [backlog]);
+  useEffect(() => {
+    localStorage.getItem("backlog") &&
+      setBacklog(localStorage.getItem("backlog")?.split(","));
+  }, [backlog]);
 
   return (
     <ThemeProvider

@@ -91,7 +91,10 @@ const GameCard = (props) => {
           onClick={(e) => {
             let gameName =
               e.target.parentElement.parentElement.firstChild.innerText;
-            props.setBacklog(props.backlog.concat(gameName));
+            if (!props.backlog.includes(gameName)) {
+              props.setBacklog(props.backlog.concat(gameName));
+              localStorage.setItem("backlog", props.backlog.concat(gameName));
+            }
           }}
         >
           Add to Backlog
