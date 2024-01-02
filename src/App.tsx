@@ -76,6 +76,7 @@ function App() {
                   key={index}
                   backlog={backlog}
                   setBacklog={setBacklog}
+                  setBacklogOpen={setBacklogOpen}
                 />
               );
             }
