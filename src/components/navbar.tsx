@@ -16,7 +16,7 @@ const Navbar = (props) => {
   return (
     <NavigationMenu className="sticky min-w-full justify-between  px-4 bg-background shadow-2xl ">
       <NavigationMenuList className="cursor-pointer space-x-0">
-        <NavigationMenuItem className="flex">
+        <NavigationMenuLink className="flex">
           <ModeToggle />
           <Input
             onChange={(e) => handleChange(e.target.value)}
@@ -24,7 +24,7 @@ const Navbar = (props) => {
             placeholder="Search..."
             className="w-50"
           />
-        </NavigationMenuItem>
+        </NavigationMenuLink>
         <NavigationMenuLink
           href=""
           className="hover:bg-secondary p-4 transition-colors"

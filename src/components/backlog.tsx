@@ -6,7 +6,11 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
+import { useState } from "react";
+
 const Backlog = (props) => {
+  const [selected, setSelected] = useState([]);
+
   // let backlogExample = [
   //   "The Legend of Zelda: Ocarina of Time",
   //   "The Legend of Dragoon",
@@ -19,12 +23,26 @@ const Backlog = (props) => {
   // ];
 
   function selectGame(elem) {
-    // console.log(elem.children[0]);
     if (elem.children[0]) {
       elem.children[0].checked == true
         ? (elem.children[0].checked = false)
         : (elem.children[0].checked = true);
     }
+  }
+
+  function markAsCompleted(button) {
+    let allGames = document.querySelectorAll("li");
+    console.log(allGames.length);
+    for (let i = 0; i < allGames.length; i++) {
+      if (allGames[i].lastChild.checked == true) {
+        setSelected(selected.concat(allGames[i].innerText));
+      }
+    }
+    // allGames.forEach((e) => {
+    //   if (e.lastChild.checked == true) {
+    //     setSelected(selected.concat(e.innerText));
+    //   }
+    // });
   }
 
   return (
@@ -64,7 +82,14 @@ const Backlog = (props) => {
         </div>
       </CardContent>
       <CardFooter className="flex flex-col items-center">
-        <Button>Mark as completed</Button>
+        <Button
+          onClick={(e) => {
+            markAsCompleted(e.target);
+            console.log(selected);
+          }}
+        >
+          Mark as completed
+        </Button>
       </CardFooter>
     </Card>
   );
