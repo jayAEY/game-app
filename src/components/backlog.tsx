@@ -38,6 +38,7 @@ const Backlog = (props) => {
         setSelected(selected.concat(allGames[i].innerText));
       }
     }
+
     // allGames.forEach((e) => {
     //   if (e.lastChild.checked == true) {
     //     setSelected(selected.concat(e.innerText));
