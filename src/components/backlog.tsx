@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 const Backlog = (props) => {
   // const [selected, setSelected] = useState([]);
-  let selected = [];
+  // let selected = [];
   // let backlogExample = [
   //   "The Legend of Zelda: Ocarina of Time",
   //   "The Legend of Dragoon",
@@ -31,42 +31,25 @@ const Backlog = (props) => {
   }
 
   function markAsCompleted(button) {
+    //DISPLAY COMPLETED SOMEWHERE?
+
     let allGames = document.querySelectorAll("li");
-    // console.log(allGames.entries(3));
-    for (const game of allGames.entries()) {
-      if (game[1].lastChild.checked) {
-        selected.concat(game[1].innerText);
-        // console.log(selected);
+    let currentBacklog = localStorage.getItem("backlog")?.split(",");
+    let toRemove = [];
+    let newBacklog = [];
 
-        // console.log(game[1].innerText);
-        // console.log(selected.concat(game[1].innerText));
-        // setSelected(selected.concat(game[1].innerText));
+    allGames.forEach((game) => {
+      if (
+        game.lastChild.checked == true &&
+        toRemove.includes(game.innerText) == false
+      ) {
+        toRemove = toRemove.concat(game.innerText);
       }
-    }
-    console.log(selected.concat("pp"));
-    // console.log(selected);
-    // console.log(allGames.length);
-    // for (let i = 0; i < allGames.length; i++) {
-    //   if (allGames[i].lastChild.checked == true) {
-    //     console.log(allGames[i]);
-    //   }
-    // }
-    // for (let i = 0; i < allGames.length; i++) {
-    //   if (allGames[i].lastChild.checked == true) {
-    //     setSelected(selected.concat(allGames[i].innerText));
-    //   }
-    // }
+    });
 
-    // allGames.forEach((e) => {
-    //   if (e.lastChild.checked == true) {
-    //     setSelected(selected.concat(e.innerText));
-    //   }
-    // });
+    newBacklog = currentBacklog.filter((game) => !toRemove.includes(game));
+    localStorage.setItem("backlog", newBacklog);
   }
-
-  // useEffect(() => {
-  //   console.log(selected);
-  // }, [selected]);
 
   return (
     // <Card className=" col-span-full lg:col-span-2 lg:col-start-2 m-20 rounded-none  shadow-2xl">

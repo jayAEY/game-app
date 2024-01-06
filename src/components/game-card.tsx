@@ -63,6 +63,15 @@ const GameCard = (props) => {
     }
   };
 
+  function addGame(game) {
+    let gameName = game.target.parentElement.parentElement.firstChild.innerText;
+    if (!props.backlog.includes(gameName)) {
+      props.setBacklog(props.backlog.concat(gameName));
+      localStorage.setItem("backlog", props.backlog.concat(gameName));
+      props.setBacklogOpen(true);
+    }
+  }
+
   return (
     <Card className="flex-row col-span-4 md:col-span-2 xl:col-span-1 gap-2 rounded-none bg-card shadow-2xl">
       <CardHeader>
@@ -87,19 +96,7 @@ const GameCard = (props) => {
         </div>
       </CardContent>
       <CardFooter>
-        <Button
-          onClick={(e) => {
-            let gameName =
-              e.target.parentElement.parentElement.firstChild.innerText;
-            if (!props.backlog.includes(gameName)) {
-              props.setBacklog(props.backlog.concat(gameName));
-              localStorage.setItem("backlog", props.backlog.concat(gameName));
-              props.setBacklogOpen(true);
-            }
-          }}
-        >
-          Add to Backlog
-        </Button>
+        <Button onClick={(e) => addGame(e)}>Add to Backlog</Button>
       </CardFooter>
     </Card>
   );
