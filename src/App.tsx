@@ -3,6 +3,7 @@ import Navbar from "./components/navbar";
 import GameCard from "./components/game-card";
 import Backlog from "./components/backlog";
 import { useEffect, useState } from "react";
+import Completed from "./components/completed";
 
 function App() {
   const [data, setData] = useState([]);
@@ -12,6 +13,9 @@ function App() {
 
   const [backlog, setBacklog] = useState([]);
   const [backlogOpen, setBacklogOpen] = useState(true);
+
+  const [completed, setCompleted] = useState([]);
+  // const [backlogOpen, setBacklogOpen] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -61,6 +65,9 @@ function App() {
             setBacklog={setBacklog}
             setBacklogOpen={setBacklogOpen}
           />
+          <Completed
+          completed={completed}
+          setCompleted={setCompleted}/>
         )}
         <section className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary">
           {data.map((game, index) => {
