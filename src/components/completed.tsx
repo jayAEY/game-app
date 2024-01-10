@@ -8,7 +8,7 @@ import {
 } from "./ui/card";
 import { useEffect, useState } from "react";
 
-cCompleted = (props) => {
+const Completed = (props) => {
   // const [selected, setSelected] = useState([]);
   // let selected = [];
   // let backlogExample = [
@@ -31,8 +31,6 @@ cCompleted = (props) => {
   }
 
   function markAsCompleted(button) {
-    //DISPLAY COMP  LETED SOMEWHERE?
-
     let allGames = document.querySelectorAll("li");
     let currentBacklog = localStorage.getItem("backlog")?.split(",");
     let toRemove = [];
@@ -55,7 +53,7 @@ cCompleted = (props) => {
     // <Card className=" col-span-full lg:col-span-2 lg:col-start-2 m-20 rounded-none  shadow-2xl">
     <Card className="m-14 w-5/6 max-w-6xl rounded-none shadow-2xl">
       <CardHeader className="flex justify-center">
-        <CardTitle className="text-center text-2xl">Backlog</CardTitle>
+        <CardTitle className="text-center text-2xl">Completed</CardTitle>
         <Button
           className="absolute px-2 py-0"
           onClick={() => props.setBacklogOpen(false)}
@@ -66,8 +64,8 @@ cCompleted = (props) => {
       <CardContent className="space-y-4">
         <div className="flex flex-col  space-y-4 items-center">
           <ol className="list-decimal w-10/12">
-            {props.backlog &&
-              props.backlog.map((game, index) => {
+            {props.completed &&
+              props.completed.map((game, index) => {
                 return (
                   <li
                     className={
@@ -94,7 +92,7 @@ cCompleted = (props) => {
             // console.log(selected);
           }}
         >
-          Mark as completed
+          Remove
         </Button>
       </CardFooter>
     </Card>

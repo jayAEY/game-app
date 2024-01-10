@@ -31,7 +31,7 @@ const Backlog = (props) => {
   }
 
   function markAsCompleted(button) {
-    //DISPLAY COMPLETED SOMEWHERE?
+    //DISPLAY COMP  LETED SOMEWHERE?
 
     let allGames = document.querySelectorAll("li");
     let currentBacklog = localStorage.getItem("backlog")?.split(",");
