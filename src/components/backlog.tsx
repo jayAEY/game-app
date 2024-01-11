@@ -31,7 +31,7 @@ const Backlog = (props) => {
   }
 
   function markAsCompleted(button) {
-    //DISPLAY COMP  LETED SOMEWHERE?
+    //DISPLAY COMPLETED SOMEWHERE?
 
     let allGames = document.querySelectorAll("li");
     let currentBacklog = localStorage.getItem("backlog")?.split(",");
@@ -49,6 +49,8 @@ const Backlog = (props) => {
 
     newBacklog = currentBacklog.filter((game) => !toRemove.includes(game));
     localStorage.setItem("backlog", newBacklog);
+    localStorage.setItem("completed", toRemove);
+    // console.log(toRemove);
   }
 
   return (

@@ -44,20 +44,27 @@ const AvatarMenu = (props) => {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>Profile</DropdownMenuItem>
+          {/* <DropdownMenuItem>Profile</DropdownMenuItem> */}
           <DropdownMenuItem
             onClick={() => {
               props.setBacklogOpen(true);
             }}
           >
-            Games
+            Backlog
           </DropdownMenuItem>
-          <DropdownMenuItem>Reviews</DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              props.setCompletedOpen(true);
+            }}
+          >
+            Completed
+          </DropdownMenuItem>
+          {/* <DropdownMenuItem>Reviews</DropdownMenuItem>
           <DropdownMenuItem>Collections</DropdownMenuItem>
           <DropdownMenuItem>Stats</DropdownMenuItem>
           <DropdownMenuItem>Friends (0)</DropdownMenuItem>
           <DropdownMenuItem>Messages (0)</DropdownMenuItem>
-          <DropdownMenuItem>Options</DropdownMenuItem>
+          <DropdownMenuItem>Options</DropdownMenuItem> */}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>Log out</DropdownMenuItem>

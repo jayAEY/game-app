@@ -44,7 +44,10 @@ const Navbar = (props) => {
           Submit
         </NavigationMenuLink>
       </NavigationMenuList>
-      <AvatarMenu setBacklogOpen={props.setBacklogOpen} />
+      <AvatarMenu
+        setBacklogOpen={props.setBacklogOpen}
+        setCompletedOpen={props.setCompletedOpen}
+      />
     </NavigationMenu>
   );
 };

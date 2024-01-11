@@ -15,7 +15,7 @@ function App() {
   const [backlogOpen, setBacklogOpen] = useState(true);
 
   const [completed, setCompleted] = useState([]);
-  // const [backlogOpen, setBacklogOpen] = useState(true);
+  const [completedOpen, setCompletedOpen] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,6 +56,7 @@ function App() {
         setSearch={setSearch}
         backlogOpen={backlogOpen}
         setBacklogOpen={setBacklogOpen}
+        setCompletedOpen={setCompletedOpen}
       />
       <main className="flex flex-col items-center">
         {/* <main className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary"> */}
@@ -66,10 +67,13 @@ function App() {
             setBacklogOpen={setBacklogOpen}
           />
         )}
-        <Completed
-          completed={completed}
-          setCompleted={setCompleted}
-        />
+        {completedOpen === true && (
+          <Completed
+            completed={completed}
+            setCompleted={setCompleted}
+            setCompletedOpen={setCompletedOpen}
+          />
+        )}
         <section className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary">
           {data.map((game, index) => {
             if (game.background_image) {

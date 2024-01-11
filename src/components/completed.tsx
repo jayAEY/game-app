@@ -56,7 +56,7 @@ const Completed = (props) => {
         <CardTitle className="text-center text-2xl">Completed</CardTitle>
         <Button
           className="absolute px-2 py-0"
-          onClick={() => props.setBacklogOpen(false)}
+          onClick={() => props.setCompletedOpen(false)}
         >
           ✖
         </Button>
