@@ -31,9 +31,7 @@ const Backlog = (props) => {
   }
 
   function markAsCompleted(button) {
-    //DISPLAY COMPLETED SOMEWHERE?
-
-    let allGames = document.querySelectorAll("li");
+    let allGames = document.querySelectorAll(".backlogLi");
     let currentBacklog = localStorage.getItem("backlog")?.split(",");
     let toRemove = [];
     let newBacklog = [];
@@ -54,7 +52,6 @@ const Backlog = (props) => {
   }
 
   return (
-    // <Card className=" col-span-full lg:col-span-2 lg:col-start-2 m-20 rounded-none  shadow-2xl">
     <Card className="m-14 w-5/6 max-w-6xl rounded-none shadow-2xl">
       <CardHeader className="flex justify-center">
         <CardTitle className="text-center text-2xl">Backlog</CardTitle>
@@ -73,7 +70,7 @@ const Backlog = (props) => {
                 return (
                   <li
                     className={
-                      "flex  p-4 gap-1 border justify-between hover:bg-secondary"
+                      "backlogLi flex p-4 gap-1 border justify-between hover:bg-secondary"
                     }
                     onClick={(e) => selectGame(e.target)}
                     key={`${game} ${index}`}
@@ -93,7 +90,6 @@ const Backlog = (props) => {
         <Button
           onClick={(e) => {
             markAsCompleted(e.target);
-            // console.log(selected);
           }}
         >
           Mark as completed

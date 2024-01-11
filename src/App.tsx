@@ -47,6 +47,11 @@ function App() {
       setBacklog(localStorage.getItem("backlog")?.split(","));
   }, [backlog]);
 
+  useEffect(() => {
+    localStorage.getItem("completed") &&
+      setCompleted(localStorage.getItem("completed")?.split(","));
+  }, [backlog]);
+
   return (
     <ThemeProvider
       defaultTheme="dark"

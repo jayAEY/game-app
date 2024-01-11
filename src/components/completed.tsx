@@ -31,10 +31,14 @@ const Completed = (props) => {
   }
 
   function markAsCompleted(button) {
-    let allGames = document.querySelectorAll("li");
-    let currentBacklog = localStorage.getItem("backlog")?.split(",");
+    // let allGames = document.querySelectorAll("lii");
+
+    let allGames = document.querySelectorAll(".completedLi");
+    console.log(allGames);
+    // let currentBacklog = localStorage.getItem("backlog")?.split(",");
+    let currentCompleted = localStorage.getItem("completed")?.split(",");
     let toRemove = [];
-    let newBacklog = [];
+    let newCompleted = [];
 
     allGames.forEach((game) => {
       if (
@@ -45,8 +49,8 @@ const Completed = (props) => {
       }
     });
 
-    newBacklog = currentBacklog.filter((game) => !toRemove.includes(game));
-    localStorage.setItem("backlog", newBacklog);
+    newCompleted = currentCompleted.filter((game) => !toRemove.includes(game));
+    localStorage.setItem("completed", newCompleted);
   }
 
   return (
@@ -69,7 +73,7 @@ const Completed = (props) => {
                 return (
                   <li
                     className={
-                      "flex  p-4 gap-1 border justify-between hover:bg-secondary"
+                      "completedLi flex p-4 gap-1 border justify-between hover:bg-secondary"
                     }
                     onClick={(e) => selectGame(e.target)}
                     key={`${game} ${index}`}
@@ -89,7 +93,6 @@ const Completed = (props) => {
         <Button
           onClick={(e) => {
             markAsCompleted(e.target);
-            // console.log(selected);
           }}
         >
           Remove
