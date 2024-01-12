@@ -18,12 +18,7 @@ const Completed = (props) => {
   }
 
   function markAsCompleted(button) {
-    // let allGames = document.querySelectorAll("li");
     let allGames = document.querySelectorAll(".completedLi");
-    // console.log(allGames);
-    // let currentBacklog = localStorage.getItem("backlog")?.split(",");
-    // let currentBacklog = props.backlog;
-    // let currentBacklog = localStorage.getItem("backlog")?.split(",");
     let currentCompleted = [];
     if (localStorage.getItem("completed").length > 0) {
       currentCompleted = localStorage.getItem("completed").split(",");
@@ -42,6 +37,7 @@ const Completed = (props) => {
 
     newCompleted = currentCompleted.filter((game) => !toRemove.includes(game));
     localStorage.setItem("completed", newCompleted);
+    props.setCompleted(newCompleted);
   }
 
   return (

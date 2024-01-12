@@ -39,6 +39,7 @@ const Backlog = (props) => {
     newBacklog = currentBacklog.filter((game) => !toRemove.includes(game));
     localStorage.setItem("backlog", newBacklog);
     localStorage.setItem("completed", currentCompleted.concat(toRemove));
+    props.setBacklog(newBacklog);
   }
 
   return (
