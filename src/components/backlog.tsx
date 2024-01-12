@@ -9,19 +9,6 @@ import {
 import { useEffect, useState } from "react";
 
 const Backlog = (props) => {
-  // const [selected, setSelected] = useState([]);
-  // let selected = [];
-  // let backlogExample = [
-  //   "The Legend of Zelda: Ocarina of Time",
-  //   "The Legend of Dragoon",
-  //   "Soulcalibur",
-  //   "Baldur's Gate XIII",
-  //   "The Guy Game",
-  //   "Super Mario Odyssey",
-  //   "Perfect Dark",
-  //   "Metroid Prime",
-  // ];
-
   function selectGame(elem) {
     if (elem.children[0]) {
       elem.children[0].checked == true
@@ -33,8 +20,10 @@ const Backlog = (props) => {
   function markAsCompleted(button) {
     let allGames = document.querySelectorAll(".backlogLi");
     let currentBacklog = localStorage.getItem("backlog")?.split(",");
-    let currentCompleted = localStorage.getItem("completed")?.split(",") || [];
-
+    let currentCompleted = [];
+    if (localStorage.getItem("completed")) {
+      currentCompleted = localStorage.getItem("completed").split(",");
+    }
     let toRemove = [];
     let newBacklog = [];
 
@@ -50,7 +39,6 @@ const Backlog = (props) => {
     newBacklog = currentBacklog.filter((game) => !toRemove.includes(game));
     localStorage.setItem("backlog", newBacklog);
     localStorage.setItem("completed", currentCompleted.concat(toRemove));
-    // console.log(toRemove);
   }
 
   return (

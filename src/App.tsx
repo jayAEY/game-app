@@ -74,6 +74,7 @@ function App() {
         )}
         {completedOpen === true && (
           <Completed
+            backlog={backlog}
             completed={completed}
             setCompleted={setCompleted}
             setCompletedOpen={setCompletedOpen}

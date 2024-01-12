@@ -9,19 +9,6 @@ import {
 import { useEffect, useState } from "react";
 
 const Completed = (props) => {
-  // const [selected, setSelected] = useState([]);
-  // let selected = [];
-  // let backlogExample = [
-  //   "The Legend of Zelda: Ocarina of Time",
-  //   "The Legend of Dragoon",
-  //   "Soulcalibur",
-  //   "Baldur's Gate XIII",
-  //   "The Guy Game",
-  //   "Super Mario Odyssey",
-  //   "Perfect Dark",
-  //   "Metroid Prime",
-  // ];
-
   function selectGame(elem) {
     if (elem.children[0]) {
       elem.children[0].checked == true
@@ -31,17 +18,16 @@ const Completed = (props) => {
   }
 
   function markAsCompleted(button) {
-    // let allGames = document.querySelectorAll("lii");
-
+    // let allGames = document.querySelectorAll("li");
     let allGames = document.querySelectorAll(".completedLi");
     // console.log(allGames);
-    let currentBacklog = localStorage.getItem("backlog")?.split(",");
+    // let currentBacklog = localStorage.getItem("backlog")?.split(",");
+    // let currentBacklog = props.backlog;
+    // let currentBacklog = localStorage.getItem("backlog")?.split(",");
     let currentCompleted = [];
-
-    if (localStorage.getItem("completed")?.split(",")) {
-      currentCompleted = localStorage.getItem("completed")?.split(",");
+    if (localStorage.getItem("completed").length > 0) {
+      currentCompleted = localStorage.getItem("completed").split(",");
     }
-
     let toRemove = [];
     let newCompleted = [];
 
@@ -59,7 +45,6 @@ const Completed = (props) => {
   }
 
   return (
-    // <Card className=" col-span-full lg:col-span-2 lg:col-start-2 m-20 rounded-none  shadow-2xl">
     <Card className="m-14 w-5/6 max-w-6xl rounded-none shadow-2xl">
       <CardHeader className="flex justify-center">
         <CardTitle className="text-center text-2xl">Completed</CardTitle>
