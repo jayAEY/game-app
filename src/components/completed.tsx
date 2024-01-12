@@ -36,7 +36,12 @@ const Completed = (props) => {
     let allGames = document.querySelectorAll(".completedLi");
     console.log(allGames);
     // let currentBacklog = localStorage.getItem("backlog")?.split(",");
-    let currentCompleted = localStorage.getItem("completed")?.split(",");
+    let currentCompleted = [];
+
+    if (localStorage.getItem("completed")?.split(",")) {
+      currentCompleted = localStorage.getItem("completed")?.split(",");
+    }
+
     let toRemove = [];
     let newCompleted = [];
 
