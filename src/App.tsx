@@ -64,12 +64,12 @@ function App() {
         setCompletedOpen={setCompletedOpen}
       />
       <main className="flex flex-col items-center">
-        {/* <main className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary"> */}
         {backlogOpen === true && (
           <Backlog
             backlog={backlog}
             setBacklog={setBacklog}
             setBacklogOpen={setBacklogOpen}
+            setCompleted={setCompleted}
           />
         )}
         {completedOpen === true && (

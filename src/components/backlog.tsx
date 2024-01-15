@@ -30,16 +30,32 @@ const Backlog = (props) => {
     allGames.forEach((game) => {
       if (
         game.lastChild.checked == true &&
-        toRemove.includes(game.innerText) == false
+        toRemove.includes(game.innerText) == false &&
+        currentCompleted.includes(game.innerText) == false
       ) {
+        toRemove = toRemove.concat(game.innerText);
+      } else if (
+        game.lastChild.checked == true &&
+        toRemove.includes(game.innerText) == false &&
+        currentCompleted.includes(game.innerText) == true
+      ) {
+        alert(`${game.innerText} has already been marked as completed`);
         toRemove = toRemove.concat(game.innerText);
       }
     });
 
     newBacklog = currentBacklog.filter((game) => !toRemove.includes(game));
     localStorage.setItem("backlog", newBacklog);
-    localStorage.setItem("completed", currentCompleted.concat(toRemove));
     props.setBacklog(newBacklog);
+    toRemove.map((game) => {
+      console.log(game);
+      if (!currentCompleted.includes(game)) {
+        currentCompleted = currentCompleted.concat(game);
+      }
+    });
+
+    localStorage.setItem("completed", currentCompleted);
+    props.setCompleted(currentCompleted);
   }
 
   return (
