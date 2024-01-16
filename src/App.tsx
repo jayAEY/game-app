@@ -2,14 +2,31 @@ import { ThemeProvider } from "./components/theme-provider";
 import Navbar from "./components/navbar";
 import GameCard from "./components/game-card";
 import Backlog from "./components/backlog";
-
+import { Button } from "./components/ui/button";
 import Completed from "./components/completed";
 import { useEffect, useState } from "react";
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "./components/ui/alert-dialog";
+
 function App() {
   const [data, setData] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
+
+  const [alertOpen, setAlertOpen] = useState(true);
+  const [alertMessage, setAlertMessage] = useState("");
+  // const [completedOpen, setCompletedOpen] = useState(true);
 
   const [backlog, setBacklog] = useState([]);
   const [backlogOpen, setBacklogOpen] = useState(true);
@@ -64,12 +81,24 @@ function App() {
         setCompletedOpen={setCompletedOpen}
       />
       <main className="flex flex-col items-center">
+        <AlertDialog open={alertOpen}>
+          <AlertDialogContent>
+            <AlertDialogTitle className="text-center">
+              {alertMessage}
+            </AlertDialogTitle>
+            <AlertDialogAction onClick={() => setAlertOpen(false)}>
+              Okay
+            </AlertDialogAction>
+          </AlertDialogContent>
+        </AlertDialog>
         {backlogOpen === true && (
           <Backlog
             backlog={backlog}
             setBacklog={setBacklog}
             setBacklogOpen={setBacklogOpen}
             setCompleted={setCompleted}
+            setAlertOpen={setAlertOpen}
+            setAlertMessage={setAlertMessage}
           />
         )}
         {completedOpen === true && (
@@ -95,6 +124,8 @@ function App() {
                   backlog={backlog}
                   setBacklog={setBacklog}
                   setBacklogOpen={setBacklogOpen}
+                  setAlertOpen={setAlertOpen}
+                  setAlertMessage={setAlertMessage}
                 />
               );
             }

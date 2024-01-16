@@ -6,7 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { useEffect, useState } from "react";
 
 const Backlog = (props) => {
   function selectGame(elem) {
@@ -28,19 +27,24 @@ const Backlog = (props) => {
     let newBacklog = [];
 
     allGames.forEach((game) => {
+      let gameName = game.innerText;
       if (
         game.lastChild.checked == true &&
-        toRemove.includes(game.innerText) == false &&
-        currentCompleted.includes(game.innerText) == false
+        toRemove.includes(gameName) == false &&
+        currentCompleted.includes(gameName) == false
       ) {
-        toRemove = toRemove.concat(game.innerText);
+        toRemove = toRemove.concat(gameName);
       } else if (
         game.lastChild.checked == true &&
-        toRemove.includes(game.innerText) == false &&
-        currentCompleted.includes(game.innerText) == true
+        toRemove.includes(gameName) == false &&
+        currentCompleted.includes(gameName) == true
       ) {
-        alert(`${game.innerText} has already been marked as completed`);
-        toRemove = toRemove.concat(game.innerText);
+        // alert(`${gameName} has already been marked as completed`);
+        props.setAlertOpen(true);
+        props.setAlertMessage(
+          `${gameName} has already been marked as completed`
+        );
+        toRemove = toRemove.concat(gameName);
       }
     });
 

@@ -70,7 +70,8 @@ const GameCard = (props) => {
       localStorage.setItem("backlog", props.backlog.concat(gameName));
       props.setBacklogOpen(true);
     } else if (props.backlog.includes(gameName)) {
-      alert(`${gameName} is already in backlog`);
+      props.setAlertOpen(true);
+      props.setAlertMessage(`${gameName} is already in backlog`);
     }
   }
 

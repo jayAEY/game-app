@@ -6,7 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { useEffect, useState } from "react";
 
 const Completed = (props) => {
   function selectGame(elem) {
@@ -27,11 +26,12 @@ const Completed = (props) => {
     let newCompleted = [];
 
     allGames.forEach((game) => {
+      let gameName = game.innerText;
       if (
         game.lastChild.checked == true &&
-        toRemove.includes(game.innerText) == false
+        toRemove.includes(gameName) == false
       ) {
-        toRemove = toRemove.concat(game.innerText);
+        toRemove = toRemove.concat(gameName);
       }
     });
 
