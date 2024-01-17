@@ -28,10 +28,10 @@ function App() {
   const [alertMessage, setAlertMessage] = useState("");
 
   const [backlog, setBacklog] = useState([]);
-  const [backlogOpen, setBacklogOpen] = useState(true);
+  const [backlogOpen, setBacklogOpen] = useState(false);
 
   const [completed, setCompleted] = useState([]);
-  const [completedOpen, setCompletedOpen] = useState(true);
+  const [completedOpen, setCompletedOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -90,26 +90,28 @@ function App() {
             </AlertDialogAction>
           </AlertDialogContent>
         </AlertDialog>
-        <section className="grid p-10 pb-0 grid-cols-4 gap-4 bg-secondary justify-around">
-          {backlogOpen === true && (
-            <Backlog
-              backlog={backlog}
-              setBacklog={setBacklog}
-              setBacklogOpen={setBacklogOpen}
-              setCompleted={setCompleted}
-              setAlertOpen={setAlertOpen}
-              setAlertMessage={setAlertMessage}
-            />
-          )}
-          {completedOpen === true && (
-            <Completed
-              backlog={backlog}
-              completed={completed}
-              setCompleted={setCompleted}
-              setCompletedOpen={setCompletedOpen}
-            />
-          )}
-        </section>
+        {(backlogOpen === true || completedOpen === true) && (
+          <section className="grid p-10 pb-0 grid-cols-4  gap-4 bg-secondary justify-around">
+            {backlogOpen === true && (
+              <Backlog
+                backlog={backlog}
+                setBacklog={setBacklog}
+                setBacklogOpen={setBacklogOpen}
+                setCompleted={setCompleted}
+                setAlertOpen={setAlertOpen}
+                setAlertMessage={setAlertMessage}
+              />
+            )}
+            {completedOpen === true && (
+              <Completed
+                backlog={backlog}
+                completed={completed}
+                setCompleted={setCompleted}
+                setCompletedOpen={setCompletedOpen}
+              />
+            )}
+          </section>
+        )}
         <section className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary">
           {data.map((game, index) => {
             if (game.background_image) {
