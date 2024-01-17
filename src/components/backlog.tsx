@@ -63,7 +63,7 @@ const Backlog = (props) => {
   }
 
   return (
-    <Card className="rounded-none shadow-2xl col-span-2 col-start-2 sm:col-span-4 row-span-1  max-h-min">
+    <Card className="rounded-none shadow-2xl lg:col-span-2 lg:col-start-2 sm:col-span-4 row-span-1  max-h-min">
       <CardHeader className="flex justify-center">
         <CardTitle className="text-center text-2xl">Backlog</CardTitle>
         <Button
