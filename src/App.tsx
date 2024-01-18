@@ -1,21 +1,18 @@
+// things to add
+//filter
+
 import { ThemeProvider } from "./components/theme-provider";
 import Navbar from "./components/navbar";
 import GameCard from "./components/game-card";
 import Backlog from "./components/backlog";
-import { Button } from "./components/ui/button";
 import Completed from "./components/completed";
 import { useEffect, useState } from "react";
 
 import {
   AlertDialog,
   AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "./components/ui/alert-dialog";
 
 function App() {
@@ -35,6 +32,10 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
+      // const initialData = await fetch(
+      //   `https://api.rawg.io/api/games?key=${
+      //     import.meta.env.VITE_RAWG
+      //   }&ordering=-metacritic&page_size=21`
       const initialData = await fetch(
         `https://api.rawg.io/api/games?key=${
           import.meta.env.VITE_RAWG
@@ -112,9 +113,9 @@ function App() {
             )}
           </section>
         )}
-        <section className="grid p-10 min-h-screen grid-cols-4 gap-4 bg-secondary">
+        <section className="grid p-10 min-h-screen min-w-screen grid-cols-4 gap-4 bg-secondary">
           {data.map((game, index) => {
-            if (game.background_image) {
+            if (game.background_image && index < 17) {
               return (
                 <GameCard
                   name={game.name}

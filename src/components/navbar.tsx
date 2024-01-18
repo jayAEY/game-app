@@ -16,7 +16,8 @@ const Navbar = (props) => {
     props.setSearch(searchInput.value);
   };
   return (
-    <NavigationMenu className="sticky min-w-full justify-between  px-4 bg-background shadow-2xl ">
+    <NavigationMenu className="sticky justify-between mx-10 my-4 bg-background shadow-2xl ">
+      {/* // <NavigationMenu className="sticky min-w-full justify-between m-4 bg-background shadow-2xl "> */}
       <NavigationMenuList className="cursor-pointer space-x-0">
         <NavigationMenuLink className="flex">
           <ModeToggle />
@@ -24,7 +25,7 @@ const Navbar = (props) => {
             onKeyUp={(e) => e.key == "Enter" && handleSearch()}
             type="text"
             placeholder="Search..."
-            className="w-50"
+            className="w-40"
             id="searchInput"
           />
           <Button
@@ -36,7 +37,7 @@ const Navbar = (props) => {
             <IoSearch className="absolute h-[1.2rem] w-[1.2rem] transition-all" />
           </Button>
         </NavigationMenuLink>
-        <NavigationMenuLink
+        {/* <NavigationMenuLink
           href=""
           className="hover:bg-secondary p-4 transition-colors"
         >
@@ -53,7 +54,7 @@ const Navbar = (props) => {
           className=" hover:bg-secondary p-4"
         >
           Submit
-        </NavigationMenuLink>
+        </NavigationMenuLink> */}
       </NavigationMenuList>
       <AvatarMenu
         setBacklogOpen={props.setBacklogOpen}
