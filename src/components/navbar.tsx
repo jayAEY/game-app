@@ -10,7 +10,7 @@ import AvatarMenu from "./avatar-menu";
 import { IoSearch } from "react-icons/io5";
 import { Button } from "./ui/button";
 
-const Navbar = (props) => {
+const NavBar = (props) => {
   let handleSearch = () => {
     let searchInput = document.querySelector("#searchInput");
     props.setSearch(searchInput.value);
@@ -64,4 +64,4 @@ const Navbar = (props) => {
   );
 };
 
-export default Navbar;
+export default NavBar;

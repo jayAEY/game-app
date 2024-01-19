@@ -2,11 +2,14 @@
 //filter
 
 import { ThemeProvider } from "./components/theme-provider";
-import Navbar from "./components/navbar";
+import NavBar from "./components/navbar";
 import GameCard from "./components/game-card";
 import Backlog from "./components/backlog";
 import Completed from "./components/completed";
+import SearchFilters from "./components/search-filters";
 import { useEffect, useState } from "react";
+// import { Separator } from "./components/ui/separator";
+// import { Badge } from "./components/ui/badge";
 
 import {
   AlertDialog,
@@ -74,7 +77,26 @@ function App() {
       defaultTheme="dark"
       storageKey="vite-ui-theme"
     >
-      <Navbar
+      {/* <Badge>Name</Badge>
+      <Badge variant="outline">Released</Badge>
+      <Separator orientation="vertical" />
+
+      <Badge variant="outline">Added</Badge>
+      <Separator orientation="vertical" />
+
+      <Badge variant="outline">Created</Badge>
+      <Separator orientation="vertical" />
+
+      <Badge variant="outline">Updated</Badge>
+      <Separator orientation="vertical" />
+
+      <Badge variant="outline">Rating</Badge>
+      <Separator orientation="vertical" />
+
+      <Badge variant="outline">Metacritic</Badge>
+
+      <Separator orientation="vertical" /> */}
+      <NavBar
         setSearch={setSearch}
         backlogOpen={backlogOpen}
         setBacklogOpen={setBacklogOpen}
@@ -91,6 +113,8 @@ function App() {
             </AlertDialogAction>
           </AlertDialogContent>
         </AlertDialog>
+        {/* <section></section> */}
+        <SearchFilters search={search} />
         {(backlogOpen === true || completedOpen === true) && (
           <section className="grid p-10 pb-0 grid-cols-4  gap-4 bg-secondary justify-around">
             {backlogOpen === true && (

@@ -1,4 +1,3 @@
-import Backlog from "./backlog";
 import { Button } from "./ui/button";
 import {
   Card,
