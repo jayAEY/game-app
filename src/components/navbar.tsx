@@ -16,8 +16,7 @@ const NavBar = (props) => {
     props.setSearch(searchInput.value);
   };
   return (
-    <NavigationMenu className="sticky justify-between mx-10 my-4 bg-background shadow-2xl ">
-      {/* // <NavigationMenu className="sticky min-w-full justify-between m-4 bg-background shadow-2xl "> */}
+    <NavigationMenu className="sticky justify-between px-10 py-4 bg-background shadow-lg border-b ">
       <NavigationMenuList className="cursor-pointer space-x-0">
         <NavigationMenuLink className="flex">
           <ModeToggle />

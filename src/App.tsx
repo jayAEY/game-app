@@ -23,6 +23,7 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [searchFilter, setsearchFilter] = useState("name");
 
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
