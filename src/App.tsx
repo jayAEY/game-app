@@ -23,7 +23,7 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [searchFilter, setsearchFilter] = useState("name");
+  const [searchFilter, setSearchFilter] = useState("name");
 
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
@@ -115,7 +115,11 @@ function App() {
           </AlertDialogContent>
         </AlertDialog>
         {/* <section></section> */}
-        <SearchFilters search={search} />
+        <SearchFilters
+          search={search}
+          searchFilter={searchFilter}
+          setSearchFilter={setSearchFilter}
+        />
         {(backlogOpen === true || completedOpen === true) && (
           <section className="grid p-10 pb-0 grid-cols-4  gap-4 bg-secondary justify-around">
             {backlogOpen === true && (

@@ -10,7 +10,10 @@ const SearchFilters = (props) => {
 
   // console.log(nameBadge);
   function changeFilter(button) {
-    console.log(button.target);
+    console.log(button.innerText.toLowerCase());
+    props.setSearchFilter(button.innerText.toLowerCase());
+    // console.log(props.searchFilter);
+    // console.log(button.attributes);
   }
 
   return (
@@ -22,6 +25,7 @@ const SearchFilters = (props) => {
         <ToggleGroup
           type="single"
           variant={"outline"}
+          defaultValue="name"
         >
           <ToggleGroupItem
             onClick={(e) => changeFilter(e.target)}
