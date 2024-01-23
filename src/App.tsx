@@ -23,7 +23,7 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [searchFilter, setSearchFilter] = useState("name");
+  const [searchFilter, setSearchFilter] = useState("");
 
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
@@ -48,7 +48,8 @@ function App() {
       const searchData = await fetch(
         `https://rawg.io/api/games?key=${
           import.meta.env.VITE_RAWG
-        }&search=${search}`
+          // }&search=${search}&ordering=-${searchFilter}`
+        }&search=${search}&ordering=${searchFilter}`
       );
       let json;
       // await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -58,10 +59,11 @@ function App() {
         json = await searchData.json();
       }
       setData(json.results);
-      setIsLoading(false);
+      // setIsLoading(false);
+      // console.log(data);
     };
     fetchData().catch(console.error);
-  }, [search]);
+  }, [search, searchFilter]);
 
   useEffect(() => {
     localStorage.getItem("backlog") &&
@@ -78,25 +80,6 @@ function App() {
       defaultTheme="dark"
       storageKey="vite-ui-theme"
     >
-      {/* <Badge>Name</Badge>
-      <Badge variant="outline">Released</Badge>
-      <Separator orientation="vertical" />
-
-      <Badge variant="outline">Added</Badge>
-      <Separator orientation="vertical" />
-
-      <Badge variant="outline">Created</Badge>
-      <Separator orientation="vertical" />
-
-      <Badge variant="outline">Updated</Badge>
-      <Separator orientation="vertical" />
-
-      <Badge variant="outline">Rating</Badge>
-      <Separator orientation="vertical" />
-
-      <Badge variant="outline">Metacritic</Badge>
-
-      <Separator orientation="vertical" /> */}
       <NavBar
         setSearch={setSearch}
         backlogOpen={backlogOpen}
@@ -114,7 +97,6 @@ function App() {
             </AlertDialogAction>
           </AlertDialogContent>
         </AlertDialog>
-        {/* <section></section> */}
         <SearchFilters
           search={search}
           searchFilter={searchFilter}
