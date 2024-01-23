@@ -5,7 +5,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 const SearchFilters = (props) => {
   function changeFilter(button) {
     let filter = button.innerText.toLowerCase();
-    filter == ("metacritic" || "rating")
+    filter == "metacritic"
       ? props.setSearchFilter(`-${filter}`)
       : props.setSearchFilter(`${filter}`);
     // props.setSearchFilter(`-${button.innerText.toLowerCase()}`);
@@ -41,12 +41,12 @@ const SearchFilters = (props) => {
           >
             Released
           </ToggleGroupItem>
-          <ToggleGroupItem
+          {/* <ToggleGroupItem
             onClick={(e) => changeFilter(e.target)}
             value="rating"
           >
-            Rating
-          </ToggleGroupItem>
+            User Rating
+          </ToggleGroupItem> */}
           <ToggleGroupItem
             onClick={(e) => changeFilter(e.target)}
             value="metacritic"

@@ -48,8 +48,8 @@ function App() {
       const searchData = await fetch(
         `https://rawg.io/api/games?key=${
           import.meta.env.VITE_RAWG
-          // }&search=${search}&ordering=-${searchFilter}`
-        }&search=${search}&ordering=${searchFilter}`
+          // }&search=${search}&ordering=${searchFilter}`
+        }&search=${search}&search_precise&ordering=${searchFilter}`
       );
       let json;
       // await new Promise((resolve) => setTimeout(resolve, 2000));
