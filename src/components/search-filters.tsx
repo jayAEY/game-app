@@ -41,12 +41,12 @@ const SearchFilters = (props) => {
           >
             Released
           </ToggleGroupItem>
-          {/* <ToggleGroupItem
+          <ToggleGroupItem
             onClick={(e) => changeFilter(e.target)}
             value="rating"
           >
             User Rating
-          </ToggleGroupItem> */}
+          </ToggleGroupItem>
           <ToggleGroupItem
             onClick={(e) => changeFilter(e.target)}
             value="metacritic"

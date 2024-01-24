@@ -91,6 +91,8 @@ const GameCard = (props) => {
         />
         <div className="flex space-x-2  items-center">
           <p>Release Date: {props.released}</p>
+          <p>User Rating: {props.rating}/5</p>
+
           {props.platforms &&
             props.platforms.map((plat, index) => {
               return handlePlatformIcons(plat.platform.name, index);

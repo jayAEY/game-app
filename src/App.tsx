@@ -60,7 +60,6 @@ function App() {
       }
       setData(json.results);
       // setIsLoading(false);
-      // console.log(data);
     };
     fetchData().catch(console.error);
   }, [search, searchFilter]);
@@ -135,6 +134,7 @@ function App() {
                   metacritic={game.metacritic}
                   background_image={game.background_image}
                   playtime={game.playtime}
+                  rating={game.rating}
                   key={index}
                   backlog={backlog}
                   setBacklog={setBacklog}
