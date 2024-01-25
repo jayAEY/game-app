@@ -1,3 +1,4 @@
+import { title } from "process";
 import { Button } from "./ui/button";
 import {
   Card,
@@ -16,32 +17,73 @@ import {
   BsAndroid,
 } from "react-icons/bs";
 import { DiLinux } from "react-icons/di";
+import { SiNintendo } from "react-icons/si";
 const GameCard = (props) => {
   let handlePlatformIcons = (platform, index) => {
     switch (platform) {
       case "PlayStation":
-        return <BsPlaystation key={(platform, index)} />;
+        return (
+          <BsPlaystation
+            key={(platform, index)}
+            title="Playstation"
+          />
+        );
         break;
       case "Xbox":
-        return <BsXbox key={(platform, index)} />;
+        return (
+          <BsXbox
+            key={(platform, index)}
+            title="Xbox"
+          />
+        );
         break;
       case "Nintendo":
-        return <BsNintendoSwitch key={(platform, index)} />;
+        return (
+          <SiNintendo
+            key={(platform, index)}
+            title="Nintendo"
+          />
+        );
         break;
       case "iOS":
-        return <BsApple key={(platform, index)} />;
+        return (
+          <BsApple
+            key={(platform, index)}
+            title="iOS"
+          />
+        );
         break;
       case "Apple Macintosh":
-        return <BsApple key={(platform, index)} />;
+        return (
+          <BsApple
+            key={(platform, index)}
+            title="MacOS"
+          />
+        );
         break;
       case "Android":
-        return <BsAndroid key={(platform, index)} />;
+        return (
+          <BsAndroid
+            key={(platform, index)}
+            title="Android"
+          />
+        );
         break;
       case "PC":
-        return <BsWindows key={(platform, index)} />;
+        return (
+          <BsWindows
+            key={(platform, index)}
+            title="PC"
+          />
+        );
         break;
       case "Linux":
-        return <DiLinux key={(platform, index)} />;
+        return (
+          <DiLinux
+            key={(platform, index)}
+            title="Linux"
+          />
+        );
         break;
     }
   };
@@ -55,7 +97,7 @@ const GameCard = (props) => {
       return <p className="bg-red-700 text-secondary px-1">{score}</p>;
     } else if (score == null) {
       return (
-        <p className="bg-gray-500 text-secondary text-xs font-extrabold px-0.5 py-1.5">
+        <p className="bg-gray-500 text-secondary text-xs font-extrabold px-1 py-2">
           N/A
         </p>
       );
@@ -77,22 +119,23 @@ const GameCard = (props) => {
   return (
     <Card className="flex-row col-span-4 md:col-span-2 xl:col-span-1 gap-2 rounded-none bg-card shadow-2xl">
       <CardHeader>
-        <CardTitle className="text-2xl">{props.name}</CardTitle>
+        <CardTitle className="text-3xl -mb-2">{props.name}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="flex space-x-2 items-center">
+        <div className="flex-row mb-6 items-center">
           <p>Average playtime: {props.playtime} hours</p>
-          {handleMetacritic(props.metacritic)}
+          <p>User Rating: {props.rating}/5</p>
+          <div className="flex gap-2">
+            Metacritic: {handleMetacritic(props.metacritic)}
+          </div>
         </div>
         <img
           src={props.background_image}
           className=" w-full aspect-video object-cover "
           alt={props.name}
         />
-        <div className="flex space-x-2  items-center">
+        <div className="flex space-x-2 items-center">
           <p>Release Date: {props.released}</p>
-          <p>User Rating: {props.rating}/5</p>
-
           {props.platforms &&
             props.platforms.map((plat, index) => {
               return handlePlatformIcons(plat.platform.name, index);

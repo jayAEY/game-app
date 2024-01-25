@@ -1,5 +1,5 @@
 // things to add
-//filter
+// user functionality
 
 import { ThemeProvider } from "./components/theme-provider";
 import NavBar from "./components/navbar";
@@ -8,8 +8,6 @@ import Backlog from "./components/backlog";
 import Completed from "./components/completed";
 import SearchFilters from "./components/search-filters";
 import { useEffect, useState } from "react";
-// import { Separator } from "./components/ui/separator";
-// import { Badge } from "./components/ui/badge";
 
 import {
   AlertDialog,
@@ -23,7 +21,8 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [searchFilter, setSearchFilter] = useState("");
+  const [searchFilter, setSearchFilter] = useState("relevance");
+  const [sortOrder, setSortOrder] = useState("ascending");
 
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
@@ -48,8 +47,9 @@ function App() {
       const searchData = await fetch(
         `https://rawg.io/api/games?key=${
           import.meta.env.VITE_RAWG
-          // }&search=${search}&ordering=${searchFilter}`
-        }&search=${search}&search_precise&ordering=${searchFilter}`
+        }&search=${search}&search_precise&ordering=${
+          sortOrder == "descending" ? "-" : ""
+        }${searchFilter}`
       );
       let json;
       // await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -62,7 +62,7 @@ function App() {
       // setIsLoading(false);
     };
     fetchData().catch(console.error);
-  }, [search, searchFilter]);
+  }, [search, searchFilter, sortOrder]);
 
   useEffect(() => {
     localStorage.getItem("backlog") &&
@@ -100,6 +100,8 @@ function App() {
           search={search}
           searchFilter={searchFilter}
           setSearchFilter={setSearchFilter}
+          sortOrder={sortOrder}
+          setSortOrder={setSortOrder}
         />
         {(backlogOpen === true || completedOpen === true) && (
           <section className="grid p-10 pb-0 grid-cols-4  gap-4 bg-secondary justify-around">

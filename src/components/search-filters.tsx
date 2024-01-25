@@ -1,31 +1,41 @@
 // name, released, added, created, updated, rating, metacritic.
 // reverse the sort order adding a hyphen, for example: -released.
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-
+import { useEffect, useState } from "react";
+import {
+  PiSortAscendingDuotone,
+  PiSortDescendingDuotone,
+} from "react-icons/pi";
 const SearchFilters = (props) => {
+  // const [sortOrder, setSortOrder] = useState("ascending");
+
   function changeFilter(button) {
     let filter = button.innerText.toLowerCase();
-    filter == "metacritic"
-      ? props.setSearchFilter(`-${filter}`)
-      : props.setSearchFilter(`${filter}`);
-    // props.setSearchFilter(`-${button.innerText.toLowerCase()}`);
-    // console.log(button.value);
+    if (filter == "user rating") filter = "rating";
+    props.setSearchFilter(filter);
   }
+
+  // useEffect(() => {
+  //   if (sortOrder == "descending") {
+  //     props.setSearchFilter(`-${props.searchFilter}`);
+  //   }
+  // }, [sortOrder]);
 
   return (
     props.search.length > 0 && (
       <section
         id="search-filters"
-        className="flex items-center px-10 py-4 gap-2 bg-background shadow-lg border-b"
+        className="flex items-center px-10 py-4 justify-between bg-background shadow-lg border-b"
       >
         <ToggleGroup
           type="single"
           variant={"outline"}
-          defaultValue="Relevance"
+          defaultValue="relevance"
+          value={props.searchFilter}
         >
           <ToggleGroupItem
             onClick={(e) => changeFilter(e.target)}
-            value="Relevance"
+            value="relevance"
           >
             Relevance
           </ToggleGroupItem>
@@ -54,6 +64,17 @@ const SearchFilters = (props) => {
             Metacritic
           </ToggleGroupItem>
         </ToggleGroup>
+        {props.sortOrder == "ascending" ? (
+          <PiSortAscendingDuotone
+            className="cursor-pointer hover:fill-primary"
+            onClick={() => props.setSortOrder("descending")}
+          />
+        ) : (
+          <PiSortDescendingDuotone
+            className="cursor-pointer hover:fill-primary"
+            onClick={() => props.setSortOrder("ascending")}
+          />
+        )}
       </section>
     )
   );
