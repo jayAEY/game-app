@@ -75,81 +75,84 @@ function App() {
   }, [backlog]);
 
   return (
-    <ThemeProvider
-      defaultTheme="dark"
-      storageKey="vite-ui-theme"
-    >
-      <NavBar
-        setSearch={setSearch}
-        backlogOpen={backlogOpen}
-        setBacklogOpen={setBacklogOpen}
-        setCompletedOpen={setCompletedOpen}
-      />
-      <main>
-        <AlertDialog open={alertOpen}>
-          <AlertDialogContent>
-            <AlertDialogTitle className="text-center">
-              {alertMessage}
-            </AlertDialogTitle>
-            <AlertDialogAction onClick={() => setAlertOpen(false)}>
-              Okay
-            </AlertDialogAction>
-          </AlertDialogContent>
-        </AlertDialog>
-        <SearchFilters
-          search={search}
-          searchFilter={searchFilter}
-          setSearchFilter={setSearchFilter}
-          sortOrder={sortOrder}
-          setSortOrder={setSortOrder}
+    // <body className="font-raleway">
+    <body>
+      <ThemeProvider
+        defaultTheme="dark"
+        storageKey="vite-ui-theme"
+      >
+        <NavBar
+          setSearch={setSearch}
+          backlogOpen={backlogOpen}
+          setBacklogOpen={setBacklogOpen}
+          setCompletedOpen={setCompletedOpen}
         />
-        {(backlogOpen === true || completedOpen === true) && (
-          <section className="grid p-10 pb-0 grid-cols-4  gap-4 bg-secondary justify-around">
-            {backlogOpen === true && (
-              <Backlog
-                backlog={backlog}
-                setBacklog={setBacklog}
-                setBacklogOpen={setBacklogOpen}
-                setCompleted={setCompleted}
-                setAlertOpen={setAlertOpen}
-                setAlertMessage={setAlertMessage}
-              />
-            )}
-            {completedOpen === true && (
-              <Completed
-                backlog={backlog}
-                completed={completed}
-                setCompleted={setCompleted}
-                setCompletedOpen={setCompletedOpen}
-              />
-            )}
-          </section>
-        )}
-        <section className="grid p-10 min-h-screen min-w-screen grid-cols-4 gap-4 bg-secondary">
-          {data.map((game, index) => {
-            if (game.background_image && index < 17) {
-              return (
-                <GameCard
-                  name={game.name}
-                  platforms={game.parent_platforms}
-                  released={game.released}
-                  metacritic={game.metacritic}
-                  background_image={game.background_image}
-                  playtime={game.playtime}
-                  rating={game.rating}
-                  key={index}
+        <main>
+          <AlertDialog open={alertOpen}>
+            <AlertDialogContent>
+              <AlertDialogTitle className="text-center">
+                {alertMessage}
+              </AlertDialogTitle>
+              <AlertDialogAction onClick={() => setAlertOpen(false)}>
+                Okay
+              </AlertDialogAction>
+            </AlertDialogContent>
+          </AlertDialog>
+          <SearchFilters
+            search={search}
+            searchFilter={searchFilter}
+            setSearchFilter={setSearchFilter}
+            sortOrder={sortOrder}
+            setSortOrder={setSortOrder}
+          />
+          {(backlogOpen === true || completedOpen === true) && (
+            <section className="grid p-10 pb-0 grid-cols-4  gap-4 bg-secondary justify-around">
+              {backlogOpen === true && (
+                <Backlog
                   backlog={backlog}
                   setBacklog={setBacklog}
                   setBacklogOpen={setBacklogOpen}
+                  setCompleted={setCompleted}
                   setAlertOpen={setAlertOpen}
                   setAlertMessage={setAlertMessage}
                 />
-              );
-            }
-          })}
-        </section>
-      </main>
-    </ThemeProvider>
+              )}
+              {completedOpen === true && (
+                <Completed
+                  backlog={backlog}
+                  completed={completed}
+                  setCompleted={setCompleted}
+                  setCompletedOpen={setCompletedOpen}
+                />
+              )}
+            </section>
+          )}
+          <section className="grid p-10 min-h-screen min-w-screen grid-cols-4 gap-4 bg-secondary">
+            {data.map((game, index) => {
+              if (game.background_image && index < 17) {
+                return (
+                  <GameCard
+                    name={game.name}
+                    platforms={game.parent_platforms}
+                    released={game.released}
+                    metacritic={game.metacritic}
+                    background_image={game.background_image}
+                    playtime={game.playtime}
+                    rating={game.rating}
+                    key={index}
+                    backlog={backlog}
+                    setBacklog={setBacklog}
+                    setBacklogOpen={setBacklogOpen}
+                    setAlertOpen={setAlertOpen}
+                    setAlertMessage={setAlertMessage}
+                  />
+                );
+              }
+            })}
+          </section>
+        </main>
+      </ThemeProvider>
+    </body>
   );
 }
 
