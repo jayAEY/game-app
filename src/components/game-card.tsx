@@ -130,13 +130,13 @@ const GameCard = (props) => {
   }
 
   return (
-    <Card className="flex-row col-span-4 md:col-span-2 xl:col-span-1 gap-2 rounded-none bg-card shadow-2xl border-secondary-foreground/15">
+    <Card className="flex-row col-span-4 md:col-span-2 xl:col-span-1 gap-2 rounded-none bg-card shadow-2xl border-foreground/15">
       <CardHeader>
-        <CardTitle className="text-3xl font-extrabold tracking-tight -mb-2">
+        <CardTitle className="text-4xl font-extrabold tracking-tight -mb-2">
           {props.name}
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4 font-medium ">
+      <CardContent className="space-y-4 text-foreground/70">
         <div className="flex-row mb-6 items-center">
           <p>Average playtime: {props.playtime} hours</p>
           <p>User Rating: {props.rating}/5</p>

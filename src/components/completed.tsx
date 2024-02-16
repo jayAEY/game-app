@@ -43,7 +43,9 @@ const Completed = (props) => {
   return (
     <Card className="rounded-none shadow-2xl lg:col-span-2 lg:col-start-2 col-span-4 row-span-1 max-h-min">
       <CardHeader className="flex justify-center">
-        <CardTitle className="text-center text-2xl">Completed</CardTitle>
+        <CardTitle className="text-center text-4xl font-extrabold tracking-tight">
+          Completed
+        </CardTitle>
         <Button
           className="absolute px-2 py-0"
           onClick={() => props.setCompletedOpen(false)}
@@ -51,8 +53,8 @@ const Completed = (props) => {
           ✖
         </Button>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="flex flex-col  space-y-4 items-center">
+      <CardContent className="space-y-4 text-foreground/70">
+        <div className="flex flex-col space-y-4 items-center">
           <ol className="list-decimal w-10/12">
             {props.completed &&
               props.completed.map((game, index) => {

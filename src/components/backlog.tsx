@@ -1,3 +1,4 @@
+import { Check } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   Card,
@@ -6,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
+import { Checkbox } from "./ui/checkbox";
 
 const Backlog = (props) => {
   function selectGame(elem) {
@@ -28,14 +30,18 @@ const Backlog = (props) => {
 
     allGames.forEach((game) => {
       let gameName = game.innerText;
+      console.log(game.lastChild.attributes["data-state"].nodeValue);
+      // console.log(game.checkbo)
       if (
-        game.lastChild.checked == true &&
+        // game.lastChild.checked == true &&
+        game.lastChild.attributes["data-state"].nodeValue == "checked" &&
         toRemove.includes(gameName) == false &&
         currentCompleted.includes(gameName) == false
       ) {
         toRemove = toRemove.concat(gameName);
       } else if (
-        game.lastChild.checked == true &&
+        // game.lastChild.checked == true &&
+        game.lastChild.attributes["data-state"].nodeValue == "checked" &&
         toRemove.includes(gameName) == false &&
         currentCompleted.includes(gameName) == true
       ) {
@@ -65,7 +71,9 @@ const Backlog = (props) => {
   return (
     <Card className="rounded-none shadow-2xl lg:col-span-2 lg:col-start-2 col-span-4 row-span-1  max-h-min">
       <CardHeader className="flex justify-center">
-        <CardTitle className="text-center text-2xl">Backlog</CardTitle>
+        <CardTitle className="text-center text-4xl font-extrabold tracking-tight">
+          Backlog
+        </CardTitle>
         <Button
           className="absolute px-2 py-0"
           onClick={() => props.setBacklogOpen(false)}
@@ -73,8 +81,8 @@ const Backlog = (props) => {
           ✖
         </Button>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="flex flex-col  space-y-4 items-center">
+      <CardContent className="space-y-4 text-foreground/70">
+        <div className="flex flex-col space-y-4 items-center">
           <ol className="list-decimal w-10/12">
             {props.backlog &&
               props.backlog.map((game, index) => {
@@ -87,10 +95,12 @@ const Backlog = (props) => {
                     key={`${game} ${index}`}
                   >
                     {game}
-                    <input
+                    <Checkbox />
+                    {/* <input
                       type="checkbox"
-                      className="accent-primary border-none"
-                    ></input>
+                      // className="accent-primary border-none"
+                      className="border-border"
+                    ></input> */}
                   </li>
                 );
               })}
