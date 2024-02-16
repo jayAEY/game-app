@@ -30,22 +30,17 @@ const Backlog = (props) => {
 
     allGames.forEach((game) => {
       let gameName = game.innerText;
-      console.log(game.lastChild.attributes["data-state"].nodeValue);
-      // console.log(game.checkbo)
       if (
-        // game.lastChild.checked == true &&
         game.lastChild.attributes["data-state"].nodeValue == "checked" &&
         toRemove.includes(gameName) == false &&
         currentCompleted.includes(gameName) == false
       ) {
         toRemove = toRemove.concat(gameName);
       } else if (
-        // game.lastChild.checked == true &&
         game.lastChild.attributes["data-state"].nodeValue == "checked" &&
         toRemove.includes(gameName) == false &&
         currentCompleted.includes(gameName) == true
       ) {
-        // alert(`${gameName} has already been marked as completed`);
         props.setAlertOpen(true);
         props.setAlertMessage(
           `${gameName} has already been marked as completed`
@@ -75,7 +70,7 @@ const Backlog = (props) => {
           Backlog
         </CardTitle>
         <Button
-          className="absolute px-2 py-0"
+          className="absolute px-3"
           onClick={() => props.setBacklogOpen(false)}
         >
           ✖
@@ -94,13 +89,13 @@ const Backlog = (props) => {
                     onClick={(e) => selectGame(e.target)}
                     key={`${game} ${index}`}
                   >
-                    {game}
-                    <Checkbox />
-                    {/* <input
-                      type="checkbox"
-                      // className="accent-primary border-none"
-                      className="border-border"
-                    ></input> */}
+                    <label
+                      htmlFor={game}
+                      className="cursor-pointer"
+                    >
+                      {game}
+                    </label>
+                    <Checkbox id={game} />
                   </li>
                 );
               })}

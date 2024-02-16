@@ -6,17 +6,10 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
+import { Checkbox } from "./ui/checkbox";
 
 const Completed = (props) => {
-  function selectGame(elem) {
-    if (elem.children[0]) {
-      elem.children[0].checked == true
-        ? (elem.children[0].checked = false)
-        : (elem.children[0].checked = true);
-    }
-  }
-
-  function markAsCompleted(button) {
+  function removeCompleted(button) {
     let allGames = document.querySelectorAll(".completedLi");
     let currentCompleted = [];
     if (localStorage.getItem("completed").length > 0) {
@@ -28,7 +21,7 @@ const Completed = (props) => {
     allGames.forEach((game) => {
       let gameName = game.innerText;
       if (
-        game.lastChild.checked == true &&
+        game.lastChild.attributes["data-state"].nodeValue == "checked" &&
         toRemove.includes(gameName) == false
       ) {
         toRemove = toRemove.concat(gameName);
@@ -47,7 +40,7 @@ const Completed = (props) => {
           Completed
         </CardTitle>
         <Button
-          className="absolute px-2 py-0"
+          className="absolute px-3"
           onClick={() => props.setCompletedOpen(false)}
         >
           ✖
@@ -63,14 +56,15 @@ const Completed = (props) => {
                     className={
                       "completedLi flex p-4 gap-1 border justify-between hover:bg-secondary"
                     }
-                    onClick={(e) => selectGame(e.target)}
                     key={`${game} ${index}`}
                   >
-                    {game}
-                    <input
-                      type="checkbox"
-                      className="accent-primary border-none"
-                    ></input>
+                    <label
+                      htmlFor={game}
+                      className="cursor-pointer"
+                    >
+                      {game}
+                    </label>
+                    <Checkbox id={game} />
                   </li>
                 );
               })}
@@ -80,7 +74,7 @@ const Completed = (props) => {
       <CardFooter className="flex flex-col items-center">
         <Button
           onClick={(e) => {
-            markAsCompleted(e.target);
+            removeCompleted(e.target);
           }}
         >
           Remove
