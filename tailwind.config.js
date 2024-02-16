@@ -16,9 +16,9 @@ module.exports = {
       },
     },
     extend: {
-      // fontFamily: {
-      //   raleway: ["Raleway", "sans-serif"],
-      // },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

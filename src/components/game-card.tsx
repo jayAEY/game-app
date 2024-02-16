@@ -90,14 +90,27 @@ const GameCard = (props) => {
 
   let handleMetacritic = (score) => {
     if (score > 74) {
-      return <p className="bg-green-600 text-secondary px-1 ">{score}</p>;
+      // return <p className="bg-green-600 text-secondary px-1 ">{score}</p>;
+      return (
+        <p className="bg-green-600 text-s font-extrabold px-1 text-white">
+          {score}
+        </p>
+      );
     } else if (score < 75 && score > 49) {
-      return <p className="bg-primary text-secondary px-1">{score}</p>;
+      return (
+        <p className="bg-primary text-s font-extrabold px-1 text-white">
+          {score}
+        </p>
+      );
     } else if (score < 50 && score !== null) {
-      return <p className="bg-red-700 text-secondary px-1">{score}</p>;
+      return (
+        <p className="bg-red-700 text-s font-extrabold px-1 text-white">
+          {score}
+        </p>
+      );
     } else if (score == null) {
       return (
-        <p className="bg-gray-500 text-secondary text-xs font-extrabold px-1 py-2">
+        <p className="bg-gray-500 text-secondary text-xs tracking-tighter font-extrabold px-0.5 py-1">
           N/A
         </p>
       );
@@ -117,14 +130,14 @@ const GameCard = (props) => {
   }
 
   return (
-    <Card className="flex-row col-span-4 md:col-span-2 xl:col-span-1 gap-2 rounded-none bg-card shadow-2xl">
+    <Card className="flex-row col-span-4 md:col-span-2 xl:col-span-1 gap-2 rounded-none bg-card shadow-2xl border-secondary-foreground/15">
       <CardHeader>
-        <CardTitle className="text-3xl font-bold tracking-tighter -mb-2">
+        <CardTitle className="text-3xl font-extrabold tracking-tight -mb-2">
           {props.name}
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="flex-row mb-6  items-center">
+      <CardContent className="space-y-4 font-medium ">
+        <div className="flex-row mb-6 items-center">
           <p>Average playtime: {props.playtime} hours</p>
           <p>User Rating: {props.rating}/5</p>
           <div className="flex gap-2">
@@ -145,12 +158,7 @@ const GameCard = (props) => {
         </div>
       </CardContent>
       <CardFooter>
-        <Button
-          className="font-bold"
-          onClick={(e) => addGame(e)}
-        >
-          Add to Backlog
-        </Button>
+        <Button onClick={(e) => addGame(e)}>Add to Backlog</Button>
       </CardFooter>
     </Card>
   );

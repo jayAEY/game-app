@@ -30,7 +30,7 @@ const AvatarMenu = (props) => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="w-56"
+        className="w-56 font-inter"
         align="end"
         forceMount
       >

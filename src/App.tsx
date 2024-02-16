@@ -75,8 +75,7 @@ function App() {
   }, [backlog]);
 
   return (
-    // <body className="font-raleway">
-    <body>
+    <div className="font-inter">
       <ThemeProvider
         defaultTheme="dark"
         storageKey="vite-ui-theme"
@@ -106,7 +105,8 @@ function App() {
             setSortOrder={setSortOrder}
           />
           {(backlogOpen === true || completedOpen === true) && (
-            <section className="grid p-10 pb-0 grid-cols-4  gap-4 bg-secondary justify-around">
+            <section className="grid p-10 pb-0 grid-cols-4 gap-4 justify-around">
+              {/* <section className="grid p-10 pb-0 grid-cols-4 gap-4 bg-secondary justify-around"> */}
               {backlogOpen === true && (
                 <Backlog
                   backlog={backlog}
@@ -127,7 +127,8 @@ function App() {
               )}
             </section>
           )}
-          <section className="grid p-10 min-h-screen min-w-screen grid-cols-4 gap-4 bg-secondary">
+          <section className="grid p-10 min-h-screen min-w-screen grid-cols-4 gap-4">
+            {/* <section className="grid p-10 min-h-screen min-w-screen grid-cols-4 gap-4 bg-secondary"> */}
             {data.map((game, index) => {
               if (game.background_image && index < 17) {
                 return (
@@ -152,7 +153,7 @@ function App() {
           </section>
         </main>
       </ThemeProvider>
-    </body>
+    </div>
   );
 }
 
