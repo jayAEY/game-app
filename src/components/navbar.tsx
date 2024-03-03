@@ -1,6 +1,5 @@
 import {
   NavigationMenu,
-  NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
@@ -13,7 +12,7 @@ import { Button } from "./ui/button";
 const NavBar = (props) => {
   let handleSearch = () => {
     let searchInput = document.querySelector("#searchInput");
-    props.setSearch(searchInput.value);
+    props.setSearch(searchInput.value.trim());
   };
   return (
     <NavigationMenu className="sticky justify-between px-10 py-4 bg-background shadow-lg border-b ">
@@ -26,9 +25,11 @@ const NavBar = (props) => {
             placeholder="Search..."
             className="w-40"
             id="searchInput"
+            title="search"
+            aria-label="search query"
           />
           <Button
-            onClick={(e) => handleSearch()}
+            onClick={() => handleSearch()}
             variant="outline"
             size="icon"
             className="hover:text-primary"

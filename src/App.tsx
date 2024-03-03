@@ -1,5 +1,6 @@
 // things to add
-// user functionality
+// user auth?
+// page to see more on each game?
 
 import { ThemeProvider } from "./components/theme-provider";
 import NavBar from "./components/navbar";
@@ -19,7 +20,7 @@ import {
 function App() {
   const [data, setData] = useState([]);
 
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [searchFilter, setSearchFilter] = useState("relevance");
   const [sortOrder, setSortOrder] = useState("ascending");
@@ -106,7 +107,6 @@ function App() {
           />
           {(backlogOpen === true || completedOpen === true) && (
             <section className="grid p-10 pb-0 grid-cols-4 gap-4 justify-around">
-              {/* <section className="grid p-10 pb-0 grid-cols-4 gap-4 bg-secondary justify-around"> */}
               {backlogOpen === true && (
                 <Backlog
                   backlog={backlog}
@@ -128,7 +128,6 @@ function App() {
             </section>
           )}
           <section className="grid p-10 min-h-screen min-w-screen grid-cols-4 gap-4">
-            {/* <section className="grid p-10 min-h-screen min-w-screen grid-cols-4 gap-4 bg-secondary"> */}
             {data.map((game, index) => {
               if (game.background_image && index < 17) {
                 return (
