@@ -84,7 +84,7 @@ const Backlog = (props) => {
                 return (
                   <li
                     className={
-                      "backlogLi flex p-4 gap-1 border justify-between hover:bg-secondary"
+                      "backlogLi flex p-4 gap-1 border justify-between items-center hover:bg-secondary"
                     }
                     onClick={(e) => selectGame(e.target)}
                     key={`${game} ${index}`}

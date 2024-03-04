@@ -54,7 +54,7 @@ const Completed = (props) => {
                 return (
                   <li
                     className={
-                      "completedLi flex p-4 gap-1 border justify-between hover:bg-secondary"
+                      "completedLi flex p-4 gap-1 border justify-between items-center hover:bg-secondary"
                     }
                     key={`${game} ${index}`}
                   >

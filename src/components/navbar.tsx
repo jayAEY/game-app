@@ -25,11 +25,10 @@ const NavBar = (props) => {
             placeholder="Search..."
             className="w-40"
             id="searchInput"
-            title="search"
             aria-label="search query"
           />
           <Button
-            onClick={() => handleSearch()}
+            onClick={handleSearch}
             variant="outline"
             size="icon"
             className="hover:text-primary"
@@ -37,24 +36,6 @@ const NavBar = (props) => {
             <IoSearch className="absolute h-[1.2rem] w-[1.2rem] transition-all" />
           </Button>
         </NavigationMenuLink>
-        {/* <NavigationMenuLink
-          href=""
-          className="hover:bg-secondary p-4 transition-colors"
-        >
-          Forum
-        </NavigationMenuLink>
-        <NavigationMenuLink
-          href=""
-          className="hover:bg-secondary p-4"
-        >
-          Stats
-        </NavigationMenuLink>
-        <NavigationMenuLink
-          href=""
-          className=" hover:bg-secondary p-4"
-        >
-          Submit
-        </NavigationMenuLink> */}
       </NavigationMenuList>
       <AvatarMenu
         setBacklogOpen={props.setBacklogOpen}
