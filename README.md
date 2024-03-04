@@ -9,6 +9,7 @@ Also allows for searching and displaying info on games.
 - CSS custom properties
 - Flexbox
 - Mobile-first workflow
+- [RAWG.io API](https://rawg.io/apidocs) - API for game info
 - [React](https://reactjs.org/) - JS library
 - [TailwindCSS](https://nextjs.org/) - CSS framework
 - [Vite](https://vitejs.dev/) - Frontend Build Tool

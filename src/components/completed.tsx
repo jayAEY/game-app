@@ -28,6 +28,16 @@ const Completed = (props) => {
       }
     });
 
+    props.setToastMsg(
+      `${
+        toRemove.length > 0
+          ? toRemove.length == 1
+            ? toRemove + " has been removed from completed"
+            : toRemove + " have been removed from completed"
+          : ""
+      }`
+    );
+
     newCompleted = currentCompleted.filter((game) => !toRemove.includes(game));
     localStorage.setItem("completed", newCompleted);
     props.setCompleted(newCompleted);

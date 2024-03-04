@@ -1,4 +1,3 @@
-import { Check } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   Card,
@@ -48,16 +47,29 @@ const Backlog = (props) => {
         toRemove = toRemove.concat(gameName);
       }
     });
+    props.setCompletedOpen(true);
 
-    newBacklog = currentBacklog.filter((game) => !toRemove.includes(game));
+    newBacklog = currentBacklog.filter(
+      (game) => !toRemove.includes(game) && game.length > 0
+    );
     localStorage.setItem("backlog", newBacklog);
     props.setBacklog(newBacklog);
+
     toRemove.map((game) => {
-      console.log(game);
       if (!currentCompleted.includes(game)) {
         currentCompleted = currentCompleted.concat(game);
       }
     });
+
+    props.setToastMsg(
+      `${
+        toRemove.length > 0
+          ? toRemove.length == 1
+            ? toRemove + " has been marked as completed"
+            : toRemove + " have been marked as completed"
+          : ""
+      }`
+    );
 
     localStorage.setItem("completed", currentCompleted);
     props.setCompleted(currentCompleted);

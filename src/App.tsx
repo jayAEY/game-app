@@ -3,19 +3,17 @@
 // page to see more on each game?
 
 import { ThemeProvider } from "./components/theme-provider";
+import AlertComponent from "./components/alert-component";
 import NavBar from "./components/navbar";
 import GameCard from "./components/game-card";
 import Backlog from "./components/backlog";
 import Completed from "./components/completed";
 import SearchFilters from "./components/search-filters";
+
 import { useEffect, useState } from "react";
 
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogContent,
-  AlertDialogTitle,
-} from "./components/ui/alert-dialog";
+import { Toaster } from "./components/ui/toaster";
+import { useToast } from "./components/ui/use-toast";
 
 function App() {
   const [data, setData] = useState([]);
@@ -33,6 +31,9 @@ function App() {
 
   const [completed, setCompleted] = useState([]);
   const [completedOpen, setCompletedOpen] = useState(false);
+
+  const [toastMsg, setToastMsg] = useState("");
+  const { toast } = useToast();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,12 +69,13 @@ function App() {
   useEffect(() => {
     localStorage.getItem("backlog") &&
       setBacklog(localStorage.getItem("backlog")?.split(","));
-  }, [backlog]);
-
-  useEffect(() => {
     localStorage.getItem("completed") &&
       setCompleted(localStorage.getItem("completed")?.split(","));
   }, [backlog]);
+
+  useEffect(() => {
+    toastMsg.length > 0 && toast({ title: toastMsg });
+  }, [toastMsg]);
 
   return (
     <div className="font-inter">
@@ -81,6 +83,7 @@ function App() {
         defaultTheme="dark"
         storageKey="vite-ui-theme"
       >
+        <Toaster />
         <NavBar
           setSearch={setSearch}
           backlogOpen={backlogOpen}
@@ -88,16 +91,11 @@ function App() {
           setCompletedOpen={setCompletedOpen}
         />
         <main>
-          <AlertDialog open={alertOpen}>
-            <AlertDialogContent>
-              <AlertDialogTitle className="text-center">
-                {alertMessage}
-              </AlertDialogTitle>
-              <AlertDialogAction onClick={() => setAlertOpen(false)}>
-                Okay
-              </AlertDialogAction>
-            </AlertDialogContent>
-          </AlertDialog>
+          <AlertComponent
+            setAlertOpen={setAlertOpen}
+            alertOpen={alertOpen}
+            alertMessage={alertMessage}
+          />
           <SearchFilters
             search={search}
             searchFilter={searchFilter}
@@ -115,6 +113,8 @@ function App() {
                   setCompleted={setCompleted}
                   setAlertOpen={setAlertOpen}
                   setAlertMessage={setAlertMessage}
+                  setToastMsg={setToastMsg}
+                  setCompletedOpen={setCompletedOpen}
                 />
               )}
               {completedOpen === true && (
@@ -123,6 +123,7 @@ function App() {
                   completed={completed}
                   setCompleted={setCompleted}
                   setCompletedOpen={setCompletedOpen}
+                  setToastMsg={setToastMsg}
                 />
               )}
             </section>
@@ -145,6 +146,7 @@ function App() {
                     setBacklogOpen={setBacklogOpen}
                     setAlertOpen={setAlertOpen}
                     setAlertMessage={setAlertMessage}
+                    setToastMsg={setToastMsg}
                   />
                 );
               }

@@ -90,7 +90,6 @@ const GameCard = (props) => {
 
   let handleMetacritic = (score) => {
     if (score > 74) {
-      // return <p className="bg-green-600 text-secondary px-1 ">{score}</p>;
       return (
         <p className="bg-green-600 text-s font-extrabold px-1 text-white">
           {score}
@@ -120,6 +119,7 @@ const GameCard = (props) => {
   function addGame(game) {
     let gameName = game.target.parentElement.parentElement.firstChild.innerText;
     if (!props.backlog.includes(gameName)) {
+      props.setToastMsg(`${gameName} has been added to backlog`);
       props.setBacklog(props.backlog.concat(gameName));
       localStorage.setItem("backlog", props.backlog.concat(gameName));
       props.setBacklogOpen(true);
@@ -130,14 +130,14 @@ const GameCard = (props) => {
   }
 
   return (
-    <Card className="flex-row col-span-4 md:col-span-2 xl:col-span-1 gap-2 rounded-none bg-card shadow-2xl border-foreground/15">
+    <Card className="flex-row col-span-4 md:col-span-2 xl:col-span-1 gap-2 rounded-none bg-card shadow-2xl border-foreground/15 hover:bg-secondary">
       <CardHeader>
         <CardTitle className="text-4xl font-extrabold tracking-tight -mb-2">
           {props.name}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4 text-foreground/70">
-        <div className="flex-row mb-6 items-center">
+        <div className="flex-row mb-6">
           <p>Average playtime: {props.playtime} hours</p>
           <p>User Rating: {props.rating}/5</p>
           <div className="flex gap-2">

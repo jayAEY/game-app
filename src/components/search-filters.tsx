@@ -8,7 +8,7 @@ import {
 const SearchFilters = (props) => {
   function changeFilter(button) {
     let filter = button.innerText.toLowerCase();
-    if (filter == "user rating") filter = "rating";
+    filter == "user rating" && (filter = "rating");
     props.setSearchFilter(filter);
   }
 
@@ -27,7 +27,7 @@ const SearchFilters = (props) => {
         >
           <ToggleGroupItem
             onClick={(e) => changeFilter(e.target)}
-            value="Relevance"
+            value="relevance"
             aria-label="relevance"
             size="sm"
           >
@@ -39,7 +39,7 @@ const SearchFilters = (props) => {
             aria-label="released"
             size="sm"
           >
-            Release
+            Released
           </ToggleGroupItem>
           <ToggleGroupItem
             onClick={(e) => changeFilter(e.target)}
